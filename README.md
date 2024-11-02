@@ -4,7 +4,7 @@
 2. Sidebar.jsx - where <Outlet /> is to render all of the sub routes
 3. BackButton.jsx - where BACK button functionality is implemented
 4. Map.jsx - where useNavigate hook is used to redirect (also useSearchParams is here used too)
-5. City.jsx - where useParams and useSearchParams is used to take ULR parameters
+5. City.jsx (useUrlPosition.js) - where useParams and useSearchParams is used to take ULR parameters
 6. PageNav.jsx - where <NavLink /> is used to navigate pages
 7. CityItem.jsx - where we use Link as a button to navigate (don't need to use useNavigate). IMPORTANT NOTE: check how cityId and lat + lng is stored in url
 
