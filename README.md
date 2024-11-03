@@ -15,7 +15,11 @@ For more information search react-router-dom in project
 1. Button.jsx
 2. Map.module.css - Check to see how css is set with :global(function())
 3. PageNav.global.css - Also check to see css and :global
-4. Map.jsx - All map functionality (positioning, moving based on selected city,Popup text)
+4. Map.jsx - All map functionality (positioning, moving based on selected city,Popup text).
+
+# App Overview
+
+When clicking on map we receive the position (lat, lng) and we fetch information on the location (city name, country ...). We display the city name or locality information in our form. We are using a DatePicker component from react-datepicker library. With all the data in place we are submitting the data to our json-server api where we are writing new information. All function responsible for fetching and adding cities are in CitiesContext.jsx file.
 
 # React + Vite
 
