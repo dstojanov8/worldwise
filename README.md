@@ -4,6 +4,11 @@ This project is an exercise for creating a frontend React app. For backend `json
 
 Main app functionality is in the **Sidebar** and the **Map**. In the sidebar there are a couple of views all managed by `react-router-dom`. By using the URL of the page we are displaying different components in our `<Outlet />`(Located in our **Sidebar**). There are the CityList, City, CountryList and Form views. When clicking on map we receive the position (lat, lng) and we fetch information on the location (city name, country ...). We are redirected to our Form view and display the city name or locality information in our form. We are using a _DatePicker_ component from `react-datepicker` library. With all the data in place we are submitting the data to our json-server api where we are writing new information. All function responsible for fetching and adding cities are in CitiesContext.jsx file.
 
+In the app we do have a fake Authentication system implemented, but the concepts are the same. Authentication is briefly explained below. The **Fake** part of our authentication is in the first step. We will not ask for user credentials from an api, but instead we will have a hardcoded user object in our application.
+
+- We will simply check if the user and password are correct. We will be _storing_ our logged in user in our **state** and we will be storing if the user is logged in or not. This way we can protect our application from unauthorized access.
+- We Will create a new Context where we will store that state and give the entire application three access to that state.
+
 # Important Components related to react-router-dom
 
 1. App.jsx - where all the routes are
@@ -22,6 +27,12 @@ For more information search react-router-dom in project
 2. Map.module.css - Check to see how css is set with :global(function())
 3. PageNav.global.css - Also check to see css and :global
 4. Map.jsx - All map functionality (positioning, moving based on selected city,Popup text).
+
+# User Authentication usually works in three steps
+
+1. Get user Emai and Password from a login form and check with an api endpoint if the password for the given user is correct.
+2. If the credentials are actualy correct we then redirect the user to our main aplication and we save the user object in our state.
+3. We NEED to protect our application from unauthorized access, from users that are not currently logged in.
 
 # React + Vite
 
