@@ -25,6 +25,7 @@ const FAKE_USER = {
   avatar: "https://i.pravatar.cc/100?u=zz",
 };
 
+// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
     reducer,

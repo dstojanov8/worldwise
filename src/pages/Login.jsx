@@ -14,21 +14,23 @@ export default function Login() {
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLoginClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    if (email && password) login(email, password);
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/app");
-    }
+    //* With the replace option set to true when the navigation happens we will replace
+    //* the Login page (current page) in the history stack with the specified one (/app).
+    // This is important when we have a redirect inside an effect, when user clicks on back
+    // button if we dont have replace, it wont work
+    if (isAuthenticated) navigate("/app", { replace: true });
   }, [isAuthenticated, navigate]);
 
   return (
     <main className={styles.login}>
       <PageNav />
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <label htmlFor="email">Email address</label>
           <input
@@ -50,9 +52,7 @@ export default function Login() {
         </div>
 
         <div>
-          <Button type="primary" onClick={handleLoginClick}>
-            Login
-          </Button>
+          <Button type="primary">Login</Button>
         </div>
       </form>
     </main>

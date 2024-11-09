@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
+import ProtctedRoute from "./pages/ProtctedRoute";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import City from "./components/City";
@@ -25,7 +26,14 @@ const App = () => {
             <Route path="product" element={<Product />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="login" element={<Login />} />
-            <Route path="app" element={<AppLayout />}>
+            <Route
+              path="app"
+              element={
+                <ProtctedRoute>
+                  <AppLayout />
+                </ProtctedRoute>
+              }
+            >
               {/* Index route is the default child route that is going to be
               matched if non of the other routes match */}
 

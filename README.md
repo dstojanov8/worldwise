@@ -8,16 +8,18 @@ In the app we do have a fake Authentication system implemented, but the concepts
 
 - We will simply check if the user and password are correct. We will be _storing_ our logged in user in our **state** and we will be storing if the user is logged in or not. This way we can protect our application from unauthorized access.
 - We Will create a new Context where we will store that state and give the entire application three access to that state.
+- **Logout** functionality is implemented in `User.jsx` file
 
 # Important Components related to react-router-dom
 
-1. App.jsx - where all the routes are
-2. Sidebar.jsx - where <Outlet /> is to render all of the sub routes
-3. BackButton.jsx - where BACK button functionality is implemented
-4. Map.jsx - where useNavigate hook is used to redirect (also useSearchParams is here used too)
-5. City.jsx (useUrlPosition.js) - where useParams and useSearchParams is used to take ULR parameters
-6. PageNav.jsx - where <NavLink /> is used to navigate pages
-7. CityItem.jsx - where we use Link as a button to navigate (don't need to use useNavigate). IMPORTANT NOTE: check how cityId and lat + lng is stored in url
+1. `App.jsx` - where all the routes are
+2. `Sidebar.jsx` - where <Outlet /> is to render all of the sub routes
+3. `BackButton.jsx` - where BACK button functionality is implemented
+4. `Map.jsx` - where useNavigate hook is used to redirect (also useSearchParams is here used too)
+5. `City.jsx` (useUrlPosition.js) - where useParams and useSearchParams is used to take ULR parameters
+6. `PageNav.jsx` - where <NavLink /> is used to navigate pages
+7. `CityItem.jsx` - where we use Link as a button to navigate (don't need to use useNavigate). IMPORTANT NOTE: check how cityId and lat + lng is stored in url
+8. `Login.jsx` - where we use {replace: true} in our navigate function, important when we have navigate inside an effect (back button wont work)
 
 For more information search react-router-dom in project
 
@@ -31,8 +33,16 @@ For more information search react-router-dom in project
 # User Authentication usually works in three steps
 
 1. Get user Emai and Password from a login form and check with an api endpoint if the password for the given user is correct.
+
+- In our case we are sending email and password to `AuthContext` and check if the credentials are correct
+
 2. If the credentials are actualy correct we then redirect the user to our main aplication and we save the user object in our state.
+
+- In `Login.jsx` we are redirecting to our app on successfull login (if user is authenticated), also user object is saved in `AuthContext` with isAuthenticated flag
+
 3. We NEED to protect our application from unauthorized access, from users that are not currently logged in.
+
+- `ProtectedRoute.jsx` file is created and it wraps the entire application. In this component we are checking for our _isAuthenticated_ flag. If it is **false** the app redirects to `'/'`, if **true**, user can use the app normally. We are using `ProtectedRoute.jsx` in out `App.jsx` file.
 
 # React + Vite
 
